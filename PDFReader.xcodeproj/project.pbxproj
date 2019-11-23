@@ -9,25 +9,27 @@
 /* Begin PBXBuildFile section */
 		4F4242CA238779990051DA05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4242C9238779990051DA05 /* AppDelegate.swift */; };
 		4F4242CC238779990051DA05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4242CB238779990051DA05 /* SceneDelegate.swift */; };
-		4F4242CE238779990051DA05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4242CD238779990051DA05 /* ViewController.swift */; };
 		4F4242D1238779990051DA05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F4242CF238779990051DA05 /* Main.storyboard */; };
 		4F4242D32387799C0051DA05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F4242D22387799C0051DA05 /* Assets.xcassets */; };
 		4F4242D62387799C0051DA05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F4242D42387799C0051DA05 /* LaunchScreen.storyboard */; };
 		4F4242E123877EEE0051DA05 /* 1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F4242DF23877EEE0051DA05 /* 1.pdf */; };
 		4F4242E423877F190051DA05 /* PDFReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4242E323877F190051DA05 /* PDFReader.swift */; };
+		4F4242E62387D5C30051DA05 /* 2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4F4242E52387D5C30051DA05 /* 2.pdf */; };
+		4F4242E82387D8A90051DA05 /* PDFReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4242E72387D8A90051DA05 /* PDFReaderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4F4242C6238779990051DA05 /* PDFReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDFReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F4242C9238779990051DA05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F4242CB238779990051DA05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4F4242CD238779990051DA05 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4F4242D0238779990051DA05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F4242D22387799C0051DA05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F4242D52387799C0051DA05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F4242D72387799C0051DA05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F4242DF23877EEE0051DA05 /* 1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 1.pdf; sourceTree = "<group>"; };
 		4F4242E323877F190051DA05 /* PDFReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReader.swift; sourceTree = "<group>"; };
+		4F4242E52387D5C30051DA05 /* 2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = 2.pdf; sourceTree = "<group>"; };
+		4F4242E72387D8A90051DA05 /* PDFReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReaderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +65,7 @@
 				4F4242DD23877D780051DA05 /* PDFReader */,
 				4F4242C9238779990051DA05 /* AppDelegate.swift */,
 				4F4242CB238779990051DA05 /* SceneDelegate.swift */,
-				4F4242CD238779990051DA05 /* ViewController.swift */,
+				4F4242E72387D8A90051DA05 /* PDFReaderViewController.swift */,
 				4F4242CF238779990051DA05 /* Main.storyboard */,
 				4F4242D22387799C0051DA05 /* Assets.xcassets */,
 				4F4242D42387799C0051DA05 /* LaunchScreen.storyboard */,
@@ -84,6 +86,7 @@
 		4F4242DE23877DA10051DA05 /* DemoFile */ = {
 			isa = PBXGroup;
 			children = (
+				4F4242E52387D5C30051DA05 /* 2.pdf */,
 				4F4242DF23877EEE0051DA05 /* 1.pdf */,
 			);
 			path = DemoFile;
@@ -151,6 +154,7 @@
 				4F4242D32387799C0051DA05 /* Assets.xcassets in Resources */,
 				4F4242E123877EEE0051DA05 /* 1.pdf in Resources */,
 				4F4242D1238779990051DA05 /* Main.storyboard in Resources */,
+				4F4242E62387D5C30051DA05 /* 2.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,10 +165,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F4242CE238779990051DA05 /* ViewController.swift in Sources */,
 				4F4242CA238779990051DA05 /* AppDelegate.swift in Sources */,
 				4F4242CC238779990051DA05 /* SceneDelegate.swift in Sources */,
 				4F4242E423877F190051DA05 /* PDFReader.swift in Sources */,
+				4F4242E82387D8A90051DA05 /* PDFReaderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

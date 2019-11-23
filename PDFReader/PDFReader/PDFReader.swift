@@ -8,33 +8,17 @@
 
 import UIKit
 
-class PDFReader: NSObject {
-    private let document: CGPDFDocument
+private class PDFPage: NSObject {
+    private let page: CGPDFPage
+    private var image: UIImage?
     
-    init?(pdfFilePath: String) {
-        guard let document = CGPDFDocument(URL(fileURLWithPath: pdfFilePath) as CFURL) else { return nil}
-        
-        self.document = document
+    init(page: CGPDFPage) {
+        self.page = page
         super.init()
     }
-    
-    func unwrapper() -> [UIImage] {
-        var ret: [UIImage] = []
-        let targetSize = UIScreen.main.bounds.size
-        
-        let pageCount = document.numberOfPages
-        for pageIndex in 0..<pageCount {
-            if let page: CGPDFPage = document.page(at: pageIndex),
-                let image = getPageImage(page: page, estimatedSize: targetSize) {
-                ret.append(image)
-            }
-        }
-        
-        return ret
-    }
-    
-    private func getPageImage(page: CGPDFPage, estimatedSize: CGSize) -> UIImage? {
-        var ret: UIImage?
+
+    func getPageImage(estimatedSize: CGSize) -> UIImage? {
+        guard image == nil else { return image }
         let rect = page.getBoxRect(CGPDFBox.mediaBox)
         let scale: CGFloat = min(estimatedSize.width/rect.size.width , estimatedSize.height/rect.size.height)
         let targetSize = CGSize(width: scale * rect.size.width, height: scale * rect.size.height)
@@ -45,10 +29,38 @@ class PDFReader: NSObject {
             context.scaleBy(x: 1.0, y: -1.0)
             context.scaleBy(x: scale, y: scale)
             context.drawPDFPage(page)
-            ret = UIGraphicsGetImageFromCurrentImageContext()
+            image = UIGraphicsGetImageFromCurrentImageContext()
             context.restoreGState()
         }
         UIGraphicsEndImageContext()
+        return image
+    }
+}
+
+class PDFReader: NSObject {
+    var pageCount: Int { return pages.count }
+    private var pages: [PDFPage] = []
+    
+    init?(pdfFilePath: String) {
+        super.init()
+        self.pages = read(pdfFilePath: pdfFilePath)
+    }
+    
+    func getPageImage(pageIndex: Int, estimatedSize: CGSize) -> UIImage? {
+        guard pageCount > pageIndex else { return nil }
+        return pages[pageIndex].getPageImage(estimatedSize: estimatedSize)
+    }
+    
+    private func read(pdfFilePath: String) -> [PDFPage] {
+        var ret: [PDFPage] = []
+        guard let document = CGPDFDocument(URL(fileURLWithPath: pdfFilePath) as CFURL) else { return ret}
+        let pageCount = document.numberOfPages
+        for pageIndex in 0..<pageCount {
+            if let page: CGPDFPage = document.page(at: pageIndex) {
+                ret.append(PDFPage(page: page))
+            }
+        }
+        
         return ret
     }
 }
